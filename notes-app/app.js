@@ -23,8 +23,14 @@ if (command === 'add') {
   console.log('Reading note.');
   notes.getNote(args.title);
 } else if (command === 'remove') {
-  console.log('Removing note.');
-  notes.removeNote(args.title);
+  var noteRemoved = notes.removeNote(args.title);
+
+  if (noteRemoved) {
+    console.log('Note removed successfuly.');
+  }
+  else {
+    console.log('Error on note removing.');
+  }
 } else {
   console.log('Unkwnow command.');
 }
