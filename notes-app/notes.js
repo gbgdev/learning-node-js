@@ -1,19 +1,21 @@
 const fs = require('fs');
 
+var fetchNotes = () => {
+  try {
+    var notesString = fs.readFileSync('notes-data.json');
+    return JSON.parse(notesString);
+  } catch (e) {
+    return [];
+  }
+};
+
 var addNote = (title, body) => {
   var node = {
     title,
     body
   }
 
-  var notes = [];
-
-  try {
-    var notesString = fs.readFileSync('notes-data.json');
-    var notes = JSON.parse(notesString);
-  } catch (e) {
-
-  }
+  notes = fetchNotes();
 
   var duplicatedNotes = notes.filter((note) => note.title === title);
 
@@ -35,12 +37,7 @@ var getNote = (title) => {
 var removeNote = (title) => {
   var notes = [];
 
-  try {
-    var notesString = fs.readFileSync('notes-data.json');
-    var notes = JSON.parse(notesString);
-  } catch (e) {
-
-  }
+  notes = fetchNotes();
 
   var filteredNotes = notes.filter((note) => note.title !== title);
 
