@@ -9,8 +9,12 @@ var fetchNotes = () => {
   }
 };
 
+var saveNotes = (notes) => {
+  fs.writeFileSync('notes-data.json', JSON.stringify(notes))
+};
+
 var addNote = (title, body) => {
-  var node = {
+  var note = {
     title,
     body
   }
@@ -20,9 +24,10 @@ var addNote = (title, body) => {
   var duplicatedNotes = notes.filter((note) => note.title === title);
 
   if (duplicatedNotes.length === 0) {
-    notes.push(node);
-    fs.writeFileSync('notes-data.json', JSON.stringify(notes))
-      console.log('Note saved successfully');
+    notes.push(note);
+    saveNotes(notes)
+
+    return note;
   }
 };
 
@@ -41,7 +46,7 @@ var removeNote = (title) => {
 
   var filteredNotes = notes.filter((note) => note.title !== title);
 
-  fs.writeFileSync('notes-data.json', JSON.stringify(filteredNotes));
+  saveNotes(filteredNotes);
 };
 
 module.exports = {
