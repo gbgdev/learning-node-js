@@ -1,4 +1,6 @@
-// This example cover an alternative strategy to save data using JSON, in order to avoid the use of database for a while.
+/*
+ * This example cover an alternative strategy to save data using JSON, in order to avoid the use of database (for a while).
+ */
 
 const fs = require('fs');
 
