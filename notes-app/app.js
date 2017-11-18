@@ -10,12 +10,8 @@ console.log(`Command: ${command}.`);
 if (command === 'add') {
   var note = notes.addNote(args.title, args.body);
 
-  if (note) {
-    console.log('Note created successfully.');
-  }
-  else {
-    console.log('Error on note adding.');
-  }
+  var message = note ? 'Note created successfully.' : 'Error on note adding.';
+  console.log(message);
 } else if (command === 'list') {
   console.log('Listing notes.');
   notes.getAll();
@@ -25,12 +21,8 @@ if (command === 'add') {
 } else if (command === 'remove') {
   var noteRemoved = notes.removeNote(args.title);
 
-  if (noteRemoved) {
-    console.log('Note removed successfuly.');
-  }
-  else {
-    console.log('Error on note removing.');
-  }
+  var message = noteRemoved ? 'Note removed successfuly.' : 'Error on note removing.';
+  console.log(message);
 } else {
   console.log('Unkwnow command.');
 }
