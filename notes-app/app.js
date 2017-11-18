@@ -8,8 +8,14 @@ var command = args._[0];
 console.log(`Command: ${command}.`);
 
 if (command === 'add') {
-  console.log('Adding new note.');
-  notes.addNote(args.title, args.body);
+  var note = notes.addNote(args.title, args.body);
+
+  if (note) {
+    console.log('Note created successfully.');
+  }
+  else {
+    console.log('Error on note adding.');
+  }
 } else if (command === 'list') {
   console.log('Listing notes.');
   notes.getAll();
