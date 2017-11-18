@@ -33,7 +33,18 @@ var getNote = (title) => {
 };
 
 var removeNote = (title) => {
-  console.log('Removing note', title);
+  var notes = [];
+
+  try {
+    var notesString = fs.readFileSync('notes-data.json');
+    var notes = JSON.parse(notesString);
+  } catch (e) {
+
+  }
+
+  var filteredNotes = notes.filter((note) => note.title !== title);
+
+  fs.writeFileSync('notes-data.json', JSON.stringify(filteredNotes));
 };
 
 module.exports = {
