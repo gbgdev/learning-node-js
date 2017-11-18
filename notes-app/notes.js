@@ -1,4 +1,4 @@
-var addNode = (title, body) => {
+var addNote = (title, body) => {
   console.log('Adding note', title, body);
 };
 
@@ -7,11 +7,11 @@ var getAll = () => {
 };
 
 var getNote = (title) => {
-  console.log('Getting node', title);
+  console.log('Getting note', title);
 };
 
 var removeNote = (title) => {
-  console.log('Removing node', title);
+  console.log('Removing note', title);
 };
 
 module.exports = {
