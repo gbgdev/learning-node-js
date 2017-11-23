@@ -13,8 +13,14 @@ if (command === 'add') {
   console.log(message);
 
 } else if (command === 'list') {
-  console.log('Listing notes.');
-  notes.getAll();
+  var noteList = notes.getAll();
+
+  console.log(`Listing ${noteList.length} note(s).`);
+
+  for (note of noteList) {
+    console.log('-');
+    console.log(notes.logNote(note));
+  }
 
 } else if (command === 'read') {
   var note = notes.getNote(args.title);
